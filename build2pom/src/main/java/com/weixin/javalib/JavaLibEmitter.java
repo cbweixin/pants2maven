@@ -4,6 +4,7 @@ import static com.weixin.utils.Utils.stg;
 import static com.weixin.utils.Utils.stripSingleQuotes;
 
 import com.weixin.datastore.DependenciesMap;
+import com.weixin.datastore.GlobalParas;
 import com.weixin.jarslib.ThirdPartyDependencyGenerator;
 import com.weixin.javalib.gen.PANTSBaseListener;
 import com.weixin.javalib.gen.PANTSParser;
@@ -20,7 +21,6 @@ import org.stringtemplate.v4.ST;
 public class JavaLibEmitter extends PANTSBaseListener {
 
   ParseTreeProperty<String> xml = new ParseTreeProperty<String>();
-  public String libName = "";
 
   String getXML(ParseTree ctx) {
     return xml.get(ctx);
@@ -58,7 +58,7 @@ public class JavaLibEmitter extends PANTSBaseListener {
   @Override public void exitName_item(PANTSParser.Name_itemContext ctx) {
     String name = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
     // for each BUILD file, there would only be one java_library
-    libName = name;
+    GlobalParas.INSTANCE.setJavaLibName(name);
     setXML(ctx,name);
   }
   @Override public void exitDependencies_item(PANTSParser.Dependencies_itemContext ctx) {
