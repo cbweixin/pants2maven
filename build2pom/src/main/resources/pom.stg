@@ -1,0 +1,46 @@
+groupIdTemplate(id) ::= <<
+\<groupId><id>\</groupId>
+>>
+
+artifactIdTemplate(id,condition) ::= <%
+<if(condition)>\<artifactId><id>_scala_2.11\</artifactId>
+<else>\<artifactId><id>\</artifactId>
+<endif>
+%>
+
+coordinatesTemplate(groupId, artifactId,tag) ::= <<
+\<<tag>\>
+  <groupIdTemplate(groupId)>
+  <artifactIdTemplate(artifactId, false)>
+\</<tag>\>
+>>
+
+versionTemplate(ver) ::= <<
+\<version><ver>\</version>
+>>
+
+object(fields) ::= <<
+<fields; separator="\n">
+>>
+
+itemsTemplate(tag, fields) ::= <<
+\<<tag>\>
+    <object(fields)>
+\</<tag>\>
+>>
+
+pomTemplate(arId, groupId, depends) ::= <<
+\<?xml version="1.0" encoding="UTF-8"?>
+\<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  \<modelVersion>4.0.0\</modelVersion>
+  <groupIdTemplate(groupId)>
+  <artifactIdTemplate(arId,false)>
+  <depends>
+\</project>
+>>
+
+
+
+
