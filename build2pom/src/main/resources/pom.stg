@@ -37,6 +37,7 @@ pomTemplate(arId, groupId, depends) ::= <<
   \<modelVersion>4.0.0\</modelVersion>
   <groupIdTemplate(groupId)>
   <artifactIdTemplate(arId,false)>
+  \<packaging>jar\</packaging>
   <depends>
 \</project>
 >>

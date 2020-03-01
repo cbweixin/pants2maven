@@ -46,7 +46,7 @@ public class App {
     generator.process(is);
     String deps = DependenciesMap.INSTANCE.getDependency(GlobalParas.INSTANCE.getJavaLibName());
 
-    String groupId = Arrays.stream(currentDirectory.split("/")).collect(Collectors.joining("."));
+    String groupId = Utils.getGroupId(currentDirectory);
     ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("pomTemplate");
     st.add("arId", GlobalParas.INSTANCE.getJavaLibName());
     st.add("groupId", groupId);

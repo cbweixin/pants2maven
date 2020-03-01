@@ -9,6 +9,7 @@ import com.weixin.javalib.gen.PANTSBaseListener;
 import com.weixin.javalib.gen.PANTSParser;
 import com.weixin.javalib.gen.PANTSParser.Dependent_entryContext;
 import com.weixin.javalib.gen.PANTSParser.Lib_itemContext;
+import com.weixin.utils.Utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,15 +89,15 @@ public class JavaLibEmitter extends PANTSBaseListener {
     String[] items = entry.split(":");
     if (items[0].startsWith("3rdparty")) {
       ThirdPartyDependencyGenerator generator = new ThirdPartyDependencyGenerator();
-      String text = generator.getDependency(items[0], items[1]);
+      String name = items.length > 1 ? items[1]
+          : items[0].substring(items[0].lastIndexOf("/") + 1);
+      String text = generator.getDependency(items[0], name);
       if (text != null) {
         setXML(ctx, text);
       }
     } else {
-      String[] modules = items[0].split("/");
-      String[] groups = Arrays.copyOfRange(modules, 0, modules.length - 1);
-      String groupId = Arrays.stream(groups).collect(Collectors.joining("."));
-      String aId = modules[modules.length - 1];
+      String groupId = Utils.getGroupId(entry);
+      String aId = Utils.getArtifcatId(entry);
       ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("coordinatesTemplate");
       st.add("groupId", groupId);
       st.add("artifactId", aId);
