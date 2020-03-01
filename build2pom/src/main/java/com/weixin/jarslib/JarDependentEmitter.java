@@ -246,8 +246,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
       list.add(getXML(ectx));
     }
 
-    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
-    st.add("tag", "dependency");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields", list);
     setXML(ctx, st.render());
 
