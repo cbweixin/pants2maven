@@ -9,6 +9,8 @@
 
 ![build1](https://user-images.githubusercontent.com/1326906/75621422-000fd800-5b49-11ea-8c7e-4c83dfc408fb.gif)
 
+![build2](https://github.com/cbweixin/pants2maven/workflows/BUILD2pom/badge.svg)
+![build3](https://github.com/cbweixin/pants2maven/workflows/.github/workflos/maven.yaml/badge.svg)
 ---
 
 ## Table of Contents 
