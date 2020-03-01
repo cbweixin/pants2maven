@@ -1,6 +1,5 @@
 package com.weixin;
 
-import static com.weixin.utils.Utils.stg;
 
 import com.weixin.datastore.DependenciesMap;
 import com.weixin.datastore.GlobalParas;
@@ -28,6 +27,11 @@ public class App
             is = new FileInputStream(inputFile);
         }
 
+        App app = new App();
+        String templatePath = app.getClass().getClassLoader().getResource("pom.stg").getPath();
+        System.out.println(templatePath);
+        GlobalParas.INSTANCE.setStg(templatePath);
+
         PomGenerator generator = new PomGenerator();
         generator.process(is);
 //    System.out.println(libName);
@@ -37,10 +41,11 @@ public class App
 
     System.out.println("The current working directory is " + currentDirectory);
         String groupId = Arrays.stream(currentDirectory.split("/")).collect(Collectors.joining("."));
-        ST st = stg.getInstanceOf("pomTemplate");
+        ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("pomTemplate");
         st.add("arId", GlobalParas.INSTANCE.getJavaLibName());
         st.add("groupId",groupId);
         st.add("depends",deps);
         System.out.println(st.render());
     }
+
 }

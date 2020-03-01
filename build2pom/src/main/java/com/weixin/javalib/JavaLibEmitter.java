@@ -1,6 +1,5 @@
 package com.weixin.javalib;
 
-import static com.weixin.utils.Utils.stg;
 import static com.weixin.utils.Utils.stripSingleQuotes;
 
 import com.weixin.datastore.DependenciesMap;
@@ -62,7 +61,7 @@ public class JavaLibEmitter extends PANTSBaseListener {
     setXML(ctx,name);
   }
   @Override public void exitDependencies_item(PANTSParser.Dependencies_itemContext ctx) {
-    ST st = stg.getInstanceOf("itemsTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
     st.add("tag", "dependencies");
     st.add("fields",getXML(ctx.dependent_list()));
     setXML(ctx, st.render());
@@ -77,7 +76,7 @@ public class JavaLibEmitter extends PANTSBaseListener {
       String text = getXML(dctx);
       l.add(text);
     }
-    ST st = stg.getInstanceOf("object");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields", l);
     setXML(ctx, st.render());
 //    System.out.println(st.render());
@@ -98,7 +97,7 @@ public class JavaLibEmitter extends PANTSBaseListener {
       String[] groups = Arrays.copyOfRange(modules, 0, modules.length - 1);
       String groupId = Arrays.stream(groups).collect(Collectors.joining("."));
       String aId = modules[modules.length - 1];
-      ST st = stg.getInstanceOf("coordinatesTemplate");
+      ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("coordinatesTemplate");
       st.add("groupId", groupId);
       st.add("artifactId", aId);
       st.add("tag", "dependency");
