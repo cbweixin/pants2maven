@@ -1,5 +1,6 @@
 package com.weixin.datastore;
 
+import java.net.URL;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupFile;
 
@@ -30,7 +31,7 @@ public enum GlobalParas {
     return stg;
   }
 
-  public void setStg(String path){
-    stg = new STGroupFile(path);
+  public void setStg(URL url){
+    stg = new STGroupFile(url);
   }
 }

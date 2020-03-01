@@ -9,8 +9,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.function.DoubleToIntFunction;
 import java.util.stream.Collectors;
 import org.stringtemplate.v4.ST;
 
@@ -19,7 +21,7 @@ import org.stringtemplate.v4.ST;
  */
 public class App {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, URISyntaxException {
     String currentDirectory = System.getProperty("user.dir");
     File file = new File(currentDirectory + "/BUILD");
     if (!file.exists()) {
@@ -37,8 +39,8 @@ public class App {
     GlobalParas.INSTANCE.setBasePath(basePath);
 
     App app = new App();
-    String templatePath = app.getClass().getClassLoader().getResource("pom.stg").getPath();
-    GlobalParas.INSTANCE.setStg(templatePath);
+    URL url = app.getClass().getClassLoader().getResource("pom.stg");
+    GlobalParas.INSTANCE.setStg(url);
 
     PomGenerator generator = new PomGenerator();
     generator.process(is);
