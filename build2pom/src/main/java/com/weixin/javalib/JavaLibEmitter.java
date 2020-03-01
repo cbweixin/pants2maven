@@ -11,9 +11,7 @@ import com.weixin.javalib.gen.PANTSParser.Dependent_entryContext;
 import com.weixin.javalib.gen.PANTSParser.Lib_itemContext;
 import com.weixin.utils.Utils;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.stringtemplate.v4.ST;
@@ -57,8 +55,12 @@ public class JavaLibEmitter extends PANTSBaseListener {
   }
   @Override public void exitName_item(PANTSParser.Name_itemContext ctx) {
     String name = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
-    // for each BUILD file, there would only be one java_library
-    GlobalParas.INSTANCE.setJavaLibName(name);
+    // for each BUILD file, there would only be one java_library, or scala_library
+    // but there would be jvm_library also, so we need to handle specially
+    // this is a purly hack. name_item ->lib_item -> lib_item_list -> jvm_lib_stmt , so we need walk up 3 times
+    if(! (ctx.getParent().getParent().getParent().start.getType() == PANTSParser.JVM_LIBRARY)){
+      GlobalParas.INSTANCE.setJavaLibName(name);
+    }
     setXML(ctx,name);
   }
   @Override public void exitDependencies_item(PANTSParser.Dependencies_itemContext ctx) {

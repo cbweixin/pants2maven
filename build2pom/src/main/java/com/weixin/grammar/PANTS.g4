@@ -44,7 +44,7 @@ strict_deps:
 tags:
   TAGS '=' '{' SINGLE_QUOTED_STRING '}' ',' ?;
 main_item:
-	MAIN '=' DOUBLE_QUOTED_STRING ','?;
+	MAIN '=' (DOUBLE_QUOTED_STRING | SINGLE_QUOTED_STRING) ','?;
 
 // lexer
 
