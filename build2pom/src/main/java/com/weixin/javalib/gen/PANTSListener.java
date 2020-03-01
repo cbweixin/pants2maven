@@ -138,6 +138,16 @@ public interface PANTSListener extends ParseTreeListener {
 	 */
 	void exitStrict_deps(PANTSParser.Strict_depsContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PANTSParser#tags}.
+	 * @param ctx the parse tree
+	 */
+	void enterTags(PANTSParser.TagsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PANTSParser#tags}.
+	 * @param ctx the parse tree
+	 */
+	void exitTags(PANTSParser.TagsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PANTSParser#main_item}.
 	 * @param ctx the parse tree
 	 */

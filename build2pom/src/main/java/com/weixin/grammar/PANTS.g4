@@ -21,7 +21,9 @@ lib_item:
 	| dependencies_item
 	| sources_item
 	| strict_deps
-	| main_item;
+	| main_item
+	| tags
+	;
 
 
 
@@ -36,6 +38,8 @@ sources_item:
 	SOURCES '=' GLOBS '(' SINGLE_QUOTED_STRING ')' ','?;
 strict_deps:
   STRICTDEPS '=' BOOL_VALUE ','?;
+tags:
+  TAGS '=' '{' SINGLE_QUOTED_STRING '}' ',' ?;
 main_item:
 	MAIN '=' DOUBLE_QUOTED_STRING ','?;
 
@@ -53,5 +57,7 @@ MAIN:
 	'main';
 STRICTDEPS:
 	'strict_deps';
+TAGS:
+  'tags';
 DOUBLE_QUOTED_STRING:
 	'"' (ESC | ~["\\]) .*? '"';

@@ -172,6 +172,18 @@ public class PANTSBaseListener implements PANTSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTags(PANTSParser.TagsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTags(PANTSParser.TagsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterMain_item(PANTSParser.Main_itemContext ctx) { }
 	/**
 	 * {@inheritDoc}
