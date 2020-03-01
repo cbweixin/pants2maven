@@ -48,6 +48,16 @@ public interface PANTSListener extends ParseTreeListener {
 	 */
 	void exitJava_lib_stmt(PANTSParser.Java_lib_stmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link PANTSParser#scala_lib_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PANTSParser#scala_lib_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link PANTSParser#jvm_lib_stmt}.
 	 * @param ctx the parse tree
 	 */

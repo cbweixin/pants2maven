@@ -7,11 +7,14 @@ pants:
 stmt_list: (stmt NEWLINE?)*;
 stmt:
 	java_lib_stmt
+	| scala_lib_stmt
 	| jvm_lib_stmt
 	;
 
 java_lib_stmt:
 	JAVA_LIBRARY '(' lib_item_list ')';
+scala_lib_stmt:
+	SCALA_LIBRARY '(' lib_item_list ')';
 jvm_lib_stmt:
 	JVM_LIBRARY '(' lib_item_list ')';
 
@@ -47,6 +50,8 @@ main_item:
 
 JAVA_LIBRARY:
 	'java_library';
+SCALA_LIBRARY:
+	'scala_library';
 JVM_LIBRARY:
 	'jvm_binary';
 SOURCES:

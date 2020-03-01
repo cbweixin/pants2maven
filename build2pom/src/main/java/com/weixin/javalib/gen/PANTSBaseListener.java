@@ -64,6 +64,18 @@ public class PANTSBaseListener implements PANTSListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterJvm_lib_stmt(PANTSParser.Jvm_lib_stmtContext ctx) { }
 	/**
 	 * {@inheritDoc}

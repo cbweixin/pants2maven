@@ -35,6 +35,12 @@ public interface PANTSVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJava_lib_stmt(PANTSParser.Java_lib_stmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link PANTSParser#scala_lib_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link PANTSParser#jvm_lib_stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -63,9 +63,6 @@ public class JarDependentEmitter extends JarsLibBaseListener {
     if (name.trim().length() > 0) {
       DependenciesMap.INSTANCE.setDependency(name, st.render());
     }
-    if (DependenciesMap.INSTANCE.getDependency("aws-java-sdk-v2-sts") != null) {
-      System.out.println(DependenciesMap.INSTANCE.getDependency("aws-java-sdk-v2-sts"));
-    }
   }
 
   @Override
@@ -114,8 +111,19 @@ public class JarDependentEmitter extends JarsLibBaseListener {
       ThirdPartyDependencyGenerator generator = new ThirdPartyDependencyGenerator();
       String entry = generator.getDependency(path, name);
       setXML(ctx, entry);
-    } else {
-      System.out.println("impossible");
+    } else if(depend.startsWith(":")){
+    // such as :amazon-kinesis-client-1.11.2, refer to the local jar depends
+      String jarName = depend.substring(1, depend.length());
+      String entry = DependenciesMap.INSTANCE.getDependency(jarName);
+      if(entry != null){
+        setXML(ctx,entry);
+      }
+      else{
+        System.out.println("impossible");
+      }
+    }
+    else{
+      System.out.println("weird");
     }
   }
 

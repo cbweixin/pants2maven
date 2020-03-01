@@ -45,6 +45,13 @@ public class PANTSBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements 
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitScala_lib_stmt(PANTSParser.Scala_lib_stmtContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitJvm_lib_stmt(PANTSParser.Jvm_lib_stmtContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
