@@ -3,6 +3,7 @@ package com.weixin.jarslib;
 import static com.weixin.utils.Utils.stripSingleQuotes;
 
 import com.weixin.datastore.DependenciesMap;
+import com.weixin.datastore.GlobalParas;
 import com.weixin.datastore.VariablesMap;
 import com.weixin.jarslib.gen.JarsLibBaseListener;
 import com.weixin.jarslib.gen.JarsLibParser;
@@ -23,7 +24,6 @@ import org.stringtemplate.v4.STGroup;
 public class JarDependentEmitter extends JarsLibBaseListener {
 
   ParseTreeProperty<String> xml = new ParseTreeProperty<String>();
-  STGroup stg = Utils.stg;
   private boolean isScalaJar = false;
 
   String getXML(ParseTree ctx) {
@@ -56,7 +56,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
       list.add(getXML(jctx));
 //      System.out.println(getXML(jctx));
     }
-    ST st = stg.getInstanceOf("object");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields", list);
 
     setXML(ctx, st.render());
@@ -95,7 +95,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
     for (Dependent_entryContext dctx : ctx.dependent_entry()) {
       list.add(getXML(dctx));
     }
-    ST st = stg.getInstanceOf("object");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields", list);
     setXML(ctx, st.render());
 
@@ -133,7 +133,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
     for (Jar_entryContext jcxt : ctx.jar_entry()) {
       list.add(getXML(jcxt));
     }
-    ST st = stg.getInstanceOf("object");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields",list);
     setXML(ctx, st.render());
   }
@@ -175,7 +175,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
     for (Jar_coordinateContext coordinateContext : ctx.jar_coordinate()) {
       list.add(getXML(coordinateContext));
     }
-    ST st = stg.getInstanceOf("itemsTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
     st.add("tag", "dependency");
     st.add("fields", list);
 
@@ -186,7 +186,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitGroupid(JarsLibParser.GroupidContext ctx) {
     String groupId = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
-    ST st = stg.getInstanceOf("groupIdTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("groupIdTemplate");
     st.add("id", groupId);
 //    System.out.println(st.render());
     setXML(ctx, st.render());
@@ -196,7 +196,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitArtifactid(JarsLibParser.ArtifactidContext ctx) {
     String aId = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
-    ST st = stg.getInstanceOf("artifactIdTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("artifactIdTemplate");
     st.add("id", aId);
     st.add("condition", isScalaJar);
 //    System.out.println(st.render());
@@ -213,7 +213,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
     if (VariablesMap.INSTANCE.getVariable(ver) != null) {
       ver = VariablesMap.INSTANCE.getVariable(ver);
     }
-    ST st = stg.getInstanceOf("versionTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("versionTemplate");
     st.add("ver", ver);
 //    System.out.println(st.render());
     setXML(ctx, st.render());
@@ -222,7 +222,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitExclude_jars_list(JarsLibParser.Exclude_jars_listContext ctx) {
     String text = getXML(ctx.excludes_list());
-    ST st = stg.getInstanceOf("itemsTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
     st.add("tag", "exclusions");
     st.add("fields", text);
 //    System.out.println(st.render());
@@ -246,7 +246,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
       list.add(getXML(ectx));
     }
 
-    ST st = stg.getInstanceOf("itemsTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
     st.add("tag", "dependency");
     st.add("fields", list);
     setXML(ctx, st.render());
@@ -256,7 +256,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitExclude_entry(JarsLibParser.Exclude_entryContext ctx) {
     String text = getXML(ctx.exclude_coordinates());
-    ST st = stg.getInstanceOf("itemsTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("itemsTemplate");
     st.add("tag", "exclusion");
     st.add("fields", text);
 //    System.out.println(st.render());
@@ -271,7 +271,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
       list.add(getXML(ectx));
 
     }
-    ST st = stg.getInstanceOf("object");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields",list);
     setXML(ctx, st.render());
 //    System.out.println(sb.toString());
@@ -281,7 +281,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitExclude_groupid(JarsLibParser.Exclude_groupidContext ctx) {
     String groupId = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
-    ST st = stg.getInstanceOf("groupIdTemplate");
+    ST st =GlobalParas.INSTANCE.getStg().getInstanceOf("groupIdTemplate");
     st.add("id", groupId);
 //    System.out.println(st.render());
     setXML(ctx, st.render());
@@ -291,7 +291,7 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void enterExclude_artifactid(JarsLibParser.Exclude_artifactidContext ctx) {
     String aId = stripSingleQuotes(ctx.SINGLE_QUOTED_STRING().getText());
-    ST st = stg.getInstanceOf("artifactIdTemplate");
+    ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("artifactIdTemplate");
     st.add("id", aId);
     st.add("condition", isScalaJar);
 //    System.out.println(st.render());

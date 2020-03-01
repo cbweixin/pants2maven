@@ -1,8 +1,7 @@
 package com.weixin.jarslib;
 
-import static com.weixin.utils.Utils.basePath;
-
 import com.weixin.datastore.DependenciesMap;
+import com.weixin.datastore.GlobalParas;
 import com.weixin.jarslib.gen.JarsLibLexer;
 import com.weixin.jarslib.gen.JarsLibParser;
 import java.io.FileInputStream;
@@ -29,13 +28,8 @@ public class ThirdPartyDependencyGenerator {
   }
 
   public String getDependency(String inputFile, String name) {
-    String fullPath = basePath + "/" + inputFile + "/BUILD";
+    String fullPath = GlobalParas.INSTANCE.getBasePath() + "/" + inputFile + "/BUILD";
     String dependent = DependenciesMap.INSTANCE.getDependency(name);
-    // deduplicate, there might be duplicate dependency, for ex
-    //  '3rdparty/jvm/org/apache/httpcomponents:httpasyncclient',
-    //  '3rdparty/jvm/org/apache/httpcomponents:httpclient',
-    // httpasyncclient and httpclient has common dependencies, which would make duplicate entry here
-    // in backend/src/java/com/tinder/backend/shared/common/BUILD
     if (dependent != null) {
       return DependenciesMap.INSTANCE.getDependency(name);
     }
