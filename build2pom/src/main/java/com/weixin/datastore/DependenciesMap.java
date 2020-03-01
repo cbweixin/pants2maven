@@ -9,7 +9,7 @@ import java.util.Map;
 public enum DependenciesMap {
 
   INSTANCE;
-  private Map<String, String> dependencies = new HashMap<>();
+  public Map<String, String> dependencies = new HashMap<>();
 
   public String getDependency (String key){
     return dependencies.get(key);

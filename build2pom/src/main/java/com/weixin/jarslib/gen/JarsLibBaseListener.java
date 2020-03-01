@@ -232,6 +232,18 @@ public class JarsLibBaseListener implements JarsLibListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterClassifier(JarsLibParser.ClassifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitClassifier(JarsLibParser.ClassifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExclude_jars_list(JarsLibParser.Exclude_jars_listContext ctx) { }
 	/**
 	 * {@inheritDoc}

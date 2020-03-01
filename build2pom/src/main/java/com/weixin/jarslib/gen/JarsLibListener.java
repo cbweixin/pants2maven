@@ -198,6 +198,18 @@ public interface JarsLibListener extends ParseTreeListener {
 	 */
 	void exitForceable(JarsLibParser.ForceableContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code classifier}
+	 * labeled alternative in {@link JarsLibParser#jar_coordinate}.
+	 * @param ctx the parse tree
+	 */
+	void enterClassifier(JarsLibParser.ClassifierContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code classifier}
+	 * labeled alternative in {@link JarsLibParser#jar_coordinate}.
+	 * @param ctx the parse tree
+	 */
+	void exitClassifier(JarsLibParser.ClassifierContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code exclude_jars_list}
 	 * labeled alternative in {@link JarsLibParser#jar_coordinate}.
 	 * @param ctx the parse tree

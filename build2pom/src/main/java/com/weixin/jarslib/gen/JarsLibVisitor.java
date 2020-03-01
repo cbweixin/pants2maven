@@ -124,6 +124,13 @@ public interface JarsLibVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForceable(JarsLibParser.ForceableContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code classifier}
+	 * labeled alternative in {@link JarsLibParser#jar_coordinate}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitClassifier(JarsLibParser.ClassifierContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code exclude_jars_list}
 	 * labeled alternative in {@link JarsLibParser#jar_coordinate}.
 	 * @param ctx the parse tree

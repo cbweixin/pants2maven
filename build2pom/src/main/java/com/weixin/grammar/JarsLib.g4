@@ -39,7 +39,9 @@ jar_coordinate:
 	| REV '=' (SINGLE_QUOTED_STRING | IDENTIFIER) ','?	# version
 	| INTRANSITIVE '=' BOOL_VALUE ','?					# intransitive
 	| FORCE '=' BOOL_VALUE ','?							# forceable
-	| excludes_list ','?								# exclude_jars_list;
+	| CLASSIFIER '=' SINGLE_QUOTED_STRING ','?			# classifier
+	| excludes_list ','?								# exclude_jars_list
+	;
 
 excludes_list:
 	EXCLUDES '=' '[' exclude_entries ']' ','? NEWLINE?;
@@ -60,4 +62,8 @@ dependencies_item:
 dependent_list: (dependent_entry)*;
 dependent_entry:
 	SINGLE_QUOTED_STRING ','? NEWLINE?;
+
+// lexer
+CLASSIFIER:
+  'classifier';
 
