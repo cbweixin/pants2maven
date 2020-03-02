@@ -4,8 +4,6 @@
 > extract dependencies from pants BUILD file and write to pom file
 
 
-![build1](https://user-images.githubusercontent.com/1326906/75621422-000fd800-5b49-11ea-8c7e-4c83dfc408fb.gif)
-
 ![build2](https://github.com/cbweixin/pants2maven/workflows/BUILD2pom/badge.svg)
 ---
 
@@ -51,7 +49,6 @@ the built jar `build2pom-1.0-jar-with-dependencies.jar` would be in `target` fol
 1. go to folder where contains `BUILD` which you want to convert, for ex, `cd palo/backend/src/java/com/tinder/backend/shared/libraries/crm`.
 2. run command `java -jar ~/Downloads/build2pom-1.0-jar-with-dependencies.jar`, please specify the correct file path for the jar.
 3. `pom.xml` would be generated as well the pom.xml also whould be shown on your console
-![build3](https://user-images.githubusercontent.com/54647133/75630231-a1c11480-5b9d-11ea-820a-ee3abb91e0b2.gif)
 
 ## Known issue
 the generated `pom.xml` could contain duplicate dependencies
