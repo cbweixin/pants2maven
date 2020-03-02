@@ -26,7 +26,7 @@
 
 ## Installation
 ### executable jar
-you can downlaod jar file directly from the [releases](https://github.com/tinder-xinweihttps/BUILD2pom/releases) page
+you can downlaod jar file directly from the [releases](https://github.com/cbweixin/pants2maven/releases) page
 
 ### build
 - clone repo
@@ -41,18 +41,18 @@ the built jar `build2pom-1.0-jar-with-dependencies.jar` would be in `target` fol
 1. it would check if you current directory has `BUILD` file or not
 2. it would check if you are at `palo` repo or not
 3. for dependency which starts with `3rdparty`,such as `'3rdparty/jvm/com/google/guava'`,it would go to `3rdparty` folder and fetch this artifact, if `guava` has other dependencies , it would recursively fetch, and write all of them to pom.
-4. for dependency which is other module, such as `backend/src/java/com/tinder/backend/shared/common`,I simply process this path, make `com.tinder.backend.shared` as `groupId`, `common` as `artifactId` 
+4. for dependency which is other module, such as `backend/src/java/com/xyz/backend/shared/common`,I simply process this path, make `com.xyz.backend.shared` as `groupId`, `common` as `artifactId` 
 5. for any `scala_jar`, I add `_scala_2.11` to its `groupId`
 
 
 ## Usage
-1. go to folder where contains `BUILD` which you want to convert, for ex, `cd palo/backend/src/java/com/tinder/backend/shared/libraries/crm`.
+1. go to folder where contains `BUILD` which you want to convert, for ex, `cd palo/backend/src/java/com/xyz/backend/shared/libraries/crm`.
 2. run command `java -jar ~/Downloads/build2pom-1.0-jar-with-dependencies.jar`, please specify the correct file path for the jar.
 3. `pom.xml` would be generated as well the pom.xml also whould be shown on your console
 
 ## Known issue
 the generated `pom.xml` could contain duplicate dependencies
-for ex, `backend/src/java/com/tinder/backend/shared/common`, the `BUILD` file is like this:
+for ex, `backend/src/java/com/xyz/backend/shared/common`, the `BUILD` file is like this:
 ```
 java_library(
     name='common',
@@ -65,8 +65,8 @@ java_library(
         '3rdparty/jvm/org/apache/httpcomponents:httpclient',
         '3rdparty/jvm/org/json4s:jackson',
         '3rdparty/jvm/org/json4s:json4s-datatype-joda',
-        'backend/src/java/com/tinder/backend/shared/enums',
-        'common/src/java/com/tinder/enums',
+        'backend/src/java/com/xyz/backend/shared/enums',
+        'common/src/java/com/xyz/enums',
     ],
     strict_deps=True,
     sources=globs('*.java'),
