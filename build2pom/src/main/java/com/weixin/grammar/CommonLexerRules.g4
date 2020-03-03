@@ -51,4 +51,5 @@ fragment Letter:
 
 WS:
 	[ \t\r\n]+ -> skip; // Define whitespace rule, toss it out
+LINE_COMMENT:   '#' .*? '\r'? '\n' -> skip ;
 

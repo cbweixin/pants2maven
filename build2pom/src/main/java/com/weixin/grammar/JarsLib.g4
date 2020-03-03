@@ -39,7 +39,9 @@ jar_coordinate:
 	| REV '=' (SINGLE_QUOTED_STRING | IDENTIFIER) ','?	# version
 	| INTRANSITIVE '=' BOOL_VALUE ','?					# intransitive
 	| FORCE '=' BOOL_VALUE ','?							# forceable
+	| MUTABLE '=' BOOL_VALUE ','?							# mutable
 	| CLASSIFIER '=' SINGLE_QUOTED_STRING ','?			# classifier
+	| URL '=' SINGLE_QUOTED_STRING ','?			# url
 	| excludes_list ','?								# exclude_jars_list
 	;
 
@@ -66,4 +68,8 @@ dependent_entry:
 // lexer
 CLASSIFIER:
   'classifier';
+URL:
+  'url';
+MUTABLE:
+  'mutable';
 

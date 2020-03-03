@@ -22,7 +22,7 @@ public class PANTSParser extends Parser {
 		TAGS=16, DOUBLE_QUOTED_STRING=17, JAR_LIBRARY=18, JARS=19, JAR=20, SCALA_JAR=21, 
 		NAME=22, ORG=23, REV=24, INTRANSITIVE=25, EXCLUDES=26, EXCLUDE=27, FORCE=28, 
 		DEPENDENCIES=29, BOOL_VALUE=30, SINGLE_QUOTED_STRING=31, NEWLINE=32, IDENTIFIER=33, 
-		WS=34;
+		WS=34, LINE_COMMENT=35;
 	public static final int
 		RULE_pants = 0, RULE_stmt_list = 1, RULE_stmt = 2, RULE_java_lib_stmt = 3, 
 		RULE_scala_lib_stmt = 4, RULE_jvm_lib_stmt = 5, RULE_lib_item_list = 6, 
@@ -55,7 +55,7 @@ public class PANTSParser extends Parser {
 			"TAGS", "DOUBLE_QUOTED_STRING", "JAR_LIBRARY", "JARS", "JAR", "SCALA_JAR", 
 			"NAME", "ORG", "REV", "INTRANSITIVE", "EXCLUDES", "EXCLUDE", "FORCE", 
 			"DEPENDENCIES", "BOOL_VALUE", "SINGLE_QUOTED_STRING", "NEWLINE", "IDENTIFIER", 
-			"WS"
+			"WS", "LINE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -1129,7 +1129,7 @@ public class PANTSParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3$\u008d\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3%\u008d\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\3\2\3\2\3"+
 		"\3\3\3\5\3\'\n\3\7\3)\n\3\f\3\16\3,\13\3\3\4\3\4\3\4\5\4\61\n\4\3\5\3"+

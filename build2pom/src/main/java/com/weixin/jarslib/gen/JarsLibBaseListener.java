@@ -232,6 +232,18 @@ public class JarsLibBaseListener implements JarsLibListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterMutable(JarsLibParser.MutableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMutable(JarsLibParser.MutableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterClassifier(JarsLibParser.ClassifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -239,6 +251,18 @@ public class JarsLibBaseListener implements JarsLibListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitClassifier(JarsLibParser.ClassifierContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUrl(JarsLibParser.UrlContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUrl(JarsLibParser.UrlContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
