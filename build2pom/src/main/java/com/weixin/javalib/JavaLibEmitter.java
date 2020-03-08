@@ -82,7 +82,6 @@ public class JavaLibEmitter extends PANTSBaseListener {
     ST st = GlobalParas.INSTANCE.getStg().getInstanceOf("object");
     st.add("fields", l);
     setXML(ctx, st.render());
-//    System.out.println(st.render());
   }
 
   @Override

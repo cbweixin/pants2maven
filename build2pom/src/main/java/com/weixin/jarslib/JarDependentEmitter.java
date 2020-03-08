@@ -149,12 +149,14 @@ public class JarDependentEmitter extends JarsLibBaseListener {
   @Override
   public void exitJar_entry(JarsLibParser.Jar_entryContext ctx) {
     String text ;
-    if (ctx.start.getType() == JarsLibParser.RULE_java_jar_entry) {
-      text = getXML(ctx.java_jar_entry());
-    } else {
+    if("scala_jar".equals(ctx.getChild(0).getChild(0).getText())){
       text = getXML(ctx.scala_jar_entry());
+      setXML(ctx, text);
     }
-    setXML(ctx, text);
+    else if("jar".equals(ctx.getChild(0).getChild(0).getText())){
+      text = getXML(ctx.java_jar_entry());
+      setXML(ctx, text);
+    }
   }
 
   @Override
