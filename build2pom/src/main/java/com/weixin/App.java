@@ -51,8 +51,9 @@ public class App {
     st.add("arId", GlobalParas.INSTANCE.getJavaLibName());
     st.add("groupId", groupId);
     st.add("depends", deps);
-    System.out.println(st.render());
-    Utils.writePomFile(st.render(), currentDirectory);
+    String xml = Utils.xmlDeduplicate(st.render());
+    System.out.println("xml = " + xml);
+    Utils.writePomFile(xml, currentDirectory);
   }
 
 }
