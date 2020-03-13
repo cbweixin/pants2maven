@@ -85,7 +85,6 @@ public class Utils {
       Document doc = dBuilder.parse(is);
 
       NodeList list = doc.getElementsByTagName("dependency");
-      System.out.println("list.getLength() = " + list.getLength());
 
       List<Element> needToRemove = new ArrayList<>();
 
@@ -102,9 +101,7 @@ public class Utils {
           version = versions.item(0).getFirstChild().getNodeValue();
         }
 
-        System.out.println("element at " + i);
         String coordinates = groupId + ":" + aId + ":" + version;
-        System.out.println("coordinates = " + coordinates);
         if (jars.contains(coordinates)) {
           needToRemove.add(element);
         } else {
@@ -136,7 +133,7 @@ public class Utils {
   public static String documentToString(Document document) {
     try {
       TransformerFactory tf = TransformerFactory.newInstance();
-      InputStream in = Class.forName("App").getClassLoader().getResourceAsStream("strip-space.xsl");
+      InputStream in = Utils.class.getClassLoader().getResourceAsStream("strip-space.xsl");
       Transformer trans = tf.newTransformer(new StreamSource(in));
       trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
       trans.setOutputProperty(OutputKeys.METHOD, "xml");
@@ -148,9 +145,8 @@ public class Utils {
       return sw.toString();
     } catch (TransformerException tEx) {
       tEx.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
     }
+
     return null;
   }
 
