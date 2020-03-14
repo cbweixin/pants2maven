@@ -9,11 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import org.stringtemplate.v4.ST;
 
 /**
@@ -21,7 +17,11 @@ import org.stringtemplate.v4.ST;
  */
 public class App {
 
-  public static void main(String[] args) throws IOException, URISyntaxException {
+  public static void main(String[] args) throws IOException{
+    if(args.length == 0 || args[0] == null || args[0].trim().length() == 0){
+      System.out.println("please specify absolute path of pants' 3rdparty jvm library path");
+      System.out.println("Usage: java -jar /xx/xx/3rdparty");
+    }
     String currentDirectory = System.getProperty("user.dir");
     File file = new File(currentDirectory + "/BUILD");
     if (!file.exists()) {
@@ -31,12 +31,7 @@ public class App {
 
     InputStream is = new FileInputStream(currentDirectory + "/BUILD");
 
-    String basePath = Utils.getBasePath(currentDirectory);
-    if (basePath == null || basePath.trim().length() == 0) {
-      System.err.println("not in palo repo");
-      System.exit(1);
-    }
-    GlobalParas.INSTANCE.setBasePath(basePath);
+    GlobalParas.INSTANCE.setBasePath(args[0]);
 
     App app = new App();
     URL url = app.getClass().getClassLoader().getResource("pom.stg");
