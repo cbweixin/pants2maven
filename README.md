@@ -14,7 +14,7 @@
 - [Installation](#installation)
 - [Features](#features)
 - [Usage](#usage)
-- [How to convert pom.xml to build.gradle](#how-to-convert-pom.xml-to-build.gradl)
+- [How to convert pom.xml to build.gradle](#how-to-convert-pomxml-to-buildgradle)
 - [Tests](#tests-optional)
 - [Contributing](#contributing)
 - [Team](#team)
@@ -58,6 +58,7 @@ in your `BUILD` file, you should only have one `java_library`, otherwise, it wou
 
 ## How to convert pom.xml to build.gradle
 gradle support convert pom.xml to build.gradle. just do `gradle init --type pom` 
+![build2pom2](https://user-images.githubusercontent.com/1326906/76693986-36aa2000-662a-11ea-9c7c-6925624be77a.gif)
 
 ## Tests (Optional)
 ---
