@@ -1,8 +1,9 @@
 lexer grammar CommonLexerRules;
 
+TARGET:
+  'target';
 JAR_LIBRARY:
 	'jar_library';
-
 JARS:
 	'jars';
 JAR:

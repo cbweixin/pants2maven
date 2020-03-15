@@ -4,6 +4,7 @@ import com.weixin.datastore.DependenciesMap;
 import com.weixin.datastore.GlobalParas;
 import com.weixin.jarslib.gen.JarsLibLexer;
 import com.weixin.jarslib.gen.JarsLibParser;
+import com.weixin.utils.UnderLineErrorListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +20,8 @@ public class ThirdPartyDependencyGenerator {
     JarsLibLexer lex = new JarsLibLexer(CharStreams.fromStream(is));
     CommonTokenStream tokens = new CommonTokenStream(lex);
     JarsLibParser parser = new JarsLibParser(tokens);
+    parser.removeErrorListeners();
+    parser.addErrorListener(new UnderLineErrorListener());
     ParseTree tree = parser.jarslib();
 
     ParseTreeWalker walker = new ParseTreeWalker();

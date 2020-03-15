@@ -35,6 +35,24 @@ public interface JarsLibVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVar_declare(JarsLibParser.Var_declareContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JarsLibParser#target_lib_stmt}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTarget_lib_stmt(JarsLibParser.Target_lib_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JarsLibParser#target_item_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTarget_item_list(JarsLibParser.Target_item_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JarsLibParser#target_item}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTarget_item(JarsLibParser.Target_itemContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JarsLibParser#jar_lib_stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

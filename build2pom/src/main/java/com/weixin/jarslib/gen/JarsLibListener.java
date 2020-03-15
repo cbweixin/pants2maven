@@ -48,6 +48,36 @@ public interface JarsLibListener extends ParseTreeListener {
 	 */
 	void exitVar_declare(JarsLibParser.Var_declareContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JarsLibParser#target_lib_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void enterTarget_lib_stmt(JarsLibParser.Target_lib_stmtContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JarsLibParser#target_lib_stmt}.
+	 * @param ctx the parse tree
+	 */
+	void exitTarget_lib_stmt(JarsLibParser.Target_lib_stmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JarsLibParser#target_item_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterTarget_item_list(JarsLibParser.Target_item_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JarsLibParser#target_item_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitTarget_item_list(JarsLibParser.Target_item_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JarsLibParser#target_item}.
+	 * @param ctx the parse tree
+	 */
+	void enterTarget_item(JarsLibParser.Target_itemContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JarsLibParser#target_item}.
+	 * @param ctx the parse tree
+	 */
+	void exitTarget_item(JarsLibParser.Target_itemContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JarsLibParser#jar_lib_stmt}.
 	 * @param ctx the parse tree
 	 */

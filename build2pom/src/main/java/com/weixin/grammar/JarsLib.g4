@@ -8,10 +8,18 @@ jarslib:
 stmt_list: (stmt NEWLINE?)*;
 stmt:
 	var_declare
-	| jar_lib_stmt;
+	| jar_lib_stmt
+	| target_lib_stmt;
 
 var_declare:
 	IDENTIFIER '=' SINGLE_QUOTED_STRING NEWLINE?;
+
+target_lib_stmt:
+  TARGET '(' target_item_list ')';
+target_item_list: (target_item NEWLINE?)*;
+target_item:
+	name_item
+	| dependencies_item;
 
 jar_lib_stmt:
 	JAR_LIBRARY '(' jars_item_list ')';
