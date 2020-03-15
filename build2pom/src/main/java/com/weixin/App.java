@@ -19,9 +19,10 @@ public class App {
 
   public static void main(String[] args) throws IOException{
     if(args.length == 0 || args[0] == null || args[0].trim().length() == 0){
-      System.out.println("please specify absolute path of pants' 3rdparty jvm library path");
-      System.out.println("for ex, if your 3rdparty libary is /xx/xxx/3rdparty, you can pass in /xxx/xx");
+      System.err.println("please specify parent folder path of pant's 3rdparty jvm library path");
+      System.out.println("for ex, if your 3rdparty libary is /aa/bb/3rdparty, you can pass in /aa/bb");
       System.out.println("Usage: java -jar /xxx/xx");
+      System.exit(1);
     }
     String currentDirectory = System.getProperty("user.dir");
     File file = new File(currentDirectory + "/BUILD");
