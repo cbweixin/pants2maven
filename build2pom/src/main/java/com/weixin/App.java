@@ -48,7 +48,7 @@ public class App {
     st.add("groupId", groupId);
     st.add("depends", deps);
     String xml = Utils.xmlDeduplicate(st.render());
-    System.out.println("xml = " + xml);
+    System.out.println(xml);
     Utils.writePomFile(xml, currentDirectory);
   }
 
