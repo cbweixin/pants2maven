@@ -14,7 +14,7 @@
 - [Installation](#installation)
 - [Features](#features)
 - [Usage](#usage)
-- [Documentation](#documentation)
+- [How to convert pom.xml to build.gradle](#how-to-convert-pom.xml-to-build.gradl)
 - [Tests](#tests-optional)
 - [Contributing](#contributing)
 - [Team](#team)
@@ -55,6 +55,9 @@ the built jar `build2pom-1.0-jar-with-dependencies.jar` would be in `target` fol
 
 ## Known issue
 in your `BUILD` file, you should only have one `java_library`, otherwise, it would report error. if you have mulitple, please comment out all `java_library` which you don't need, then run the command. 
+
+## How to convert pom.xml to build.gradle
+gradle support convert pom.xml to build.gradle. just do `gradle init --type pom` 
 
 ## Tests (Optional)
 ---
