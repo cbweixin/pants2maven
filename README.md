@@ -40,7 +40,7 @@ the built jar `build2pom-1.0-jar-with-dependencies.jar` would be in `target` fol
 ---
 
 ## Features
-1. it would check if you are at `3rdparty` jvm library or not
+1. it would check if you specify `3rdparty` jvm library path or not
 2. it would check if you current directory has `BUILD` file or not
 3. for dependency which starts with `3rdparty`,such as `'3rdparty/jvm/com/google/guava'`,it would go to `3rdparty` folder and fetch this artifact, if `guava` has other dependencies , it would recursively fetch, and write all of them to pom.
 4. for dependency which is other module, such as `backend/src/java/com/xyz/backend/shared/common`,I simply process this path, make `com.xyz.backend.shared` as `groupId`, `common` as `artifactId` 
